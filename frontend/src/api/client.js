@@ -21,7 +21,14 @@ client.interceptors.response.use(
   (error) => {
     if (error.response?.status === 401) {
       useAuthStore.getState().clearAuth();
-      window.location.href = "/login";
+      const reqUrl = String(error.config?.url || "");
+      const isCredentialEndpoint =
+        reqUrl.endsWith("/login") ||
+        reqUrl.endsWith("/register") ||
+        reqUrl.endsWith("/dummyLogin");
+      if (!isCredentialEndpoint) {
+        window.location.href = "/login";
+      }
     }
     return Promise.reject(error);
   }

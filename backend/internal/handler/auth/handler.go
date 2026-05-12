@@ -61,13 +61,13 @@ func toUserResponse(u *domain.User) userResponse {
 func (h *Handler) DummyLogin(w http.ResponseWriter, r *http.Request) {
     var req dummyLoginRequest
     if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "invalid request body")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Некорректный запрос")
         return
     }
 
     role := domain.Role(req.Role)
     if role != domain.RoleAdmin && role != domain.RoleUser {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "role must be admin or user")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Роль должна быть admin или user")
         return
     }
 
@@ -86,17 +86,17 @@ func (h *Handler) DummyLogin(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
     var req registerRequest
     if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "invalid request body")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Некорректный запрос")
         return
     }
 
     if req.Email == "" || req.Password == "" {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "email and password are required")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Укажите email и пароль")
         return
     }
 
     if len(req.Password) < 8 {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "password must be at least 8 characters")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Пароль не короче 8 символов")
         return
     }
 
@@ -115,18 +115,18 @@ func (h *Handler) Register(w http.ResponseWriter, r *http.Request) {
 func (h *Handler) Login(w http.ResponseWriter, r *http.Request) {
     var req loginRequest
     if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "invalid request body")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Некорректный запрос")
         return
     }
 
     if req.Email == "" || req.Password == "" {
-        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "email and password are required")
+        httputil.Error(w, http.StatusBadRequest, "INVALID_REQUEST", "Укажите email и пароль")
         return
     }
 
     token, user, err := h.uc.Login(r.Context(), req.Email, req.Password)
     if err != nil {
-        httputil.Error(w, http.StatusUnauthorized, "UNAUTHORIZED", "invalid credentials")
+        httputil.Error(w, http.StatusUnauthorized, "UNAUTHORIZED", "Неверный email или пароль")
         return
     }
 

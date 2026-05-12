@@ -42,7 +42,7 @@ func (uc *AuthUsecase) DummyLogin(ctx context.Context, role domain.Role) (string
 		userID = uc.cfg.UserUUID
 		email = "user@example.com"
 	default:
-		return "", nil, fmt.Errorf("invalid role: %s", role)
+		return "", nil, fmt.Errorf("Недопустимая роль: %s", role)
 	}
 
 	exists, err := uc.userRepo.ExistsByID(ctx, userID)
@@ -83,7 +83,7 @@ func (uc *AuthUsecase) DummyLogin(ctx context.Context, role domain.Role) (string
 func (uc *AuthUsecase) Register(ctx context.Context, email, password string) (string, *domain.User, error) {
 	existing, err := uc.userRepo.GetByEmail(ctx, email)
 	if err == nil && existing != nil {
-		return "", nil, fmt.Errorf("email already taken")
+		return "", nil, fmt.Errorf("Этот email уже занят")
 	}
 
 	hashed, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
@@ -112,11 +112,11 @@ func (uc *AuthUsecase) Register(ctx context.Context, email, password string) (st
 func (uc *AuthUsecase) Login(ctx context.Context, email, password string) (string, *domain.User, error) {
 	user, err := uc.userRepo.GetByEmail(ctx, email)
 	if err != nil {
-		return "", nil, fmt.Errorf("invalid credentials")
+		return "", nil, fmt.Errorf("Неверный email или пароль")
 	}
 
 	if err := bcrypt.CompareHashAndPassword([]byte(user.Password), []byte(password)); err != nil {
-		return "", nil, fmt.Errorf("invalid credentials")
+		return "", nil, fmt.Errorf("Неверный email или пароль")
 	}
 
 	token, err := uc.generateToken(user.ID, string(user.Role))

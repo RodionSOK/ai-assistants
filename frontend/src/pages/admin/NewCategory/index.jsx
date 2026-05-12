@@ -51,8 +51,7 @@ export default function NewCategory() {
         <h1 className="new-category__title">Новая категория</h1>
 
         <Input
-          label="Название"
-          placeholder="Например: Еда"
+          placeholder="Название"
           value={name}
           onChange={(e) => setName(e.target.value)}
           error={errors.name}

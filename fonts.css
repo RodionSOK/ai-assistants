@@ -1,0 +1,179 @@
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-SuperItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-SuperItalic-Cy-Web.woff") format("woff");
+    font-weight: 900;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Super-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Super-Cy-Web.woff") format("woff");
+    font-weight: 900;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-BlackItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-BlackItalic-Cy-Web.woff") format("woff");
+    font-weight: 800;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Black-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Black-Cy-Web.woff") format("woff");
+    font-weight: 800;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-BoldItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-BoldItalic-Cy-Web.woff") format("woff");
+    font-weight: 700;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Bold-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Bold-Cy-Web.woff") format("woff");
+    font-weight: 700;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-SemiboldItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-SemiboldItalic-Cy-Web.woff") format("woff");
+    font-weight: 600;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Semibold-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Semibold-Cy-Web.woff") format("woff");
+    font-weight: 600;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-MediumItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-MediumItalic-Cy-Web.woff") format("woff");
+    font-weight: 500;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Medium-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Medium-Cy-Web.woff") format("woff");
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-RegularItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-RegularItalic-Cy-Web.woff") format("woff");
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Regular-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Regular-Cy-Web.woff") format("woff");
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-LightItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-LightItalic-Cy-Web.woff") format("woff");
+    font-weight: 300;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Light-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Light-Cy-Web.woff") format("woff");
+    font-weight: 300;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-ExtralightItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-ExtralightItalic-Cy-Web.woff") format("woff");
+    font-weight: 200;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Extralight-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Extralight-Cy-Web.woff") format("woff");
+    font-weight: 200;
+    font-style: normal;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-ThinItalic-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-ThinItalic-Cy-Web.woff") format("woff");
+    font-weight: 100;
+    font-style: italic;
+    font-stretch: normal;
+}
+
+@font-face {
+    font-family: "Graphik LC Web";
+    src:
+        url("../assets/fonts/Graphik-Thin-Cy-Web.woff2") format("woff2"),
+        url("../assets/fonts/Graphik-Thin-Cy-Web.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+    font-stretch: normal;
+}

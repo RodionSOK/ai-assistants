@@ -118,7 +118,7 @@ export default function EditAssistant() {
         />
 
         <Input
-          label="Название"
+          placeholder="Название"
           value={form.name}
           onChange={set("name")}
           error={errors.name}
@@ -133,7 +133,7 @@ export default function EditAssistant() {
         />
 
         <Input
-          label="Модель"
+          placeholder="Модель"
           value={form.model}
           onChange={set("model")}
           error={errors.model}

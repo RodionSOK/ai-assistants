@@ -6,7 +6,9 @@
   font-weight: 500;
   border: none;
   border-radius: var(--radius-md);
-  transition: background-color var(--transition), opacity var(--transition);
+  transition: background-color var(--transition), opacity var(--transition),
+    color var(--transition), border-color var(--transition), box-shadow var(--transition),
+    transform var(--transition-fast);
   white-space: nowrap;
 }
 
@@ -16,12 +18,38 @@
 }
 
 .btn-primary {
-  background-color: var(--color-primary);
-  color: #ffffff;
+  color: var(--color-btn-primary-text);
+  background: var(--color-btn-primary-bg);
+  border: 1px solid transparent;
+  box-shadow: none;
 }
 
 .btn-primary:hover:not(:disabled) {
-  background-color: var(--color-primary-hover);
+  background: var(--color-btn-primary-bg-hover);
+  color: var(--color-btn-primary-text);
+}
+
+.btn-primary:focus-visible {
+  outline: 2px solid var(--color-btn-primary-focus-ring);
+  outline-offset: 2px;
+  box-shadow: none;
+}
+
+[data-theme="dark"] .btn-primary {
+  color: var(--color-btn-primary-text);
+  background: var(--color-btn-primary-bg);
+  box-shadow: none;
+}
+
+[data-theme="dark"] .btn-primary:hover:not(:disabled) {
+  background: var(--color-btn-primary-bg-hover);
+  color: var(--color-btn-primary-text);
+}
+
+[data-theme="dark"] .btn-primary:focus-visible {
+  outline: 2px solid var(--color-btn-primary-focus-ring);
+  outline-offset: 2px;
+  box-shadow: none;
 }
 
 .btn-secondary {
@@ -32,15 +60,6 @@
 
 .btn-secondary:hover:not(:disabled) {
   background-color: var(--color-bg);
-}
-
-.btn-danger {
-  background-color: var(--color-danger);
-  color: #ffffff;
-}
-
-.btn-danger:hover:not(:disabled) {
-  opacity: 0.85;
 }
 
 .btn-ghost {
@@ -64,4 +83,113 @@
   border-top-color: transparent;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
+}
+
+.btn-segment {
+  padding: 0.625rem 0.5rem;
+  border-radius: var(--radius-md);
+  background-color: transparent;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-base);
+  font-weight: 500;
+  white-space: normal;
+  text-align: center;
+  line-height: 1.2;
+  min-height: 0;
+}
+
+.btn-segment:hover:not(:disabled):not(.btn-segment--active) {
+  color: var(--color-text);
+  background-color: var(--color-accent-on-surface);
+}
+
+.btn-segment--active {
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  box-shadow: none;
+}
+
+.btn-segment--active:hover:not(:disabled) {
+  background-color: var(--color-btn-primary-bg-hover);
+  color: var(--color-btn-primary-text);
+}
+
+[data-theme="dark"] .btn-segment--active {
+  background-color: var(--color-surface-tertiary);
+  color: var(--color-btn-primary-text);
+}
+
+[data-theme="dark"] .btn-segment--active:hover:not(:disabled) {
+  background-color: var(--color-surface-tertiary);
+  color: var(--color-btn-primary-text);
+}
+
+.btn-segment:focus-visible {
+  z-index: 1;
+}
+
+.btn-icon-glass {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  color: var(--color-text-secondary);
+  box-shadow: var(--shadow-sm);
+}
+
+.btn-icon-glass:hover:not(:disabled) {
+  color: var(--color-text);
+  background: var(--glass-bg);
+}
+
+.btn-icon-glass:active:not(:disabled) {
+  transform: scale(0.96);
+}
+
+.btn-icon-glass:focus-visible {
+  box-shadow: var(--focus-ring), var(--shadow-sm);
+}
+
+.btn-icon-glass svg {
+  display: block;
+}
+
+.btn-role {
+  flex-direction: column;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 1.125rem 0.75rem;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background-color: var(--color-surface-secondary);
+  color: var(--color-text-secondary);
+  white-space: normal;
+  width: 100%;
+  min-height: 0;
+  line-height: var(--leading-snug);
+}
+
+.btn-role:hover:not(:disabled):not(.btn-role--active) {
+  border-color: var(--color-border-strong);
+  color: var(--color-text);
+  background-color: var(--color-surface-secondary);
+}
+
+.btn-role--active {
+  border-color: var(--color-accent);
+  background-color: var(--color-accent-muted);
+  color: var(--color-accent);
+  box-shadow: 0 0 0 1px rgba(99, 99, 102, 0.15);
+}
+
+[data-theme="dark"] .btn-role--active {
+  box-shadow: 0 0 0 1px rgba(174, 174, 178, 0.22);
+}
+
+.btn-role:active:not(:disabled) {
+  transform: scale(0.98);
 }

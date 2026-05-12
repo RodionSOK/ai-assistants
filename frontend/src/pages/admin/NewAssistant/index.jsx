@@ -94,8 +94,7 @@ export default function NewAssistant() {
         />
 
         <Input
-          label="Название"
-          placeholder="Например: Повар"
+          placeholder="Название"
           value={form.name}
           onChange={set("name")}
           error={errors.name}
@@ -111,8 +110,7 @@ export default function NewAssistant() {
         />
 
         <Input
-          label="Модель"
-          placeholder="Например: mock-smart"
+          placeholder="Модель"
           value={form.model}
           onChange={set("model")}
           error={errors.model}
