@@ -4,8 +4,8 @@ import (
     "context"
     "fmt"
 
-    "github.com/your-username/ai-assistants/internal/domain"
-    "github.com/your-username/ai-assistants/internal/repository"
+    "github.com/RodionSOK/ai-assistants/internal/domain"
+    "github.com/RodionSOK/ai-assistants/internal/repository"
 )
 
 type AssistantRepository interface {

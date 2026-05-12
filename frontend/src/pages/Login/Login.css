@@ -1,0 +1,88 @@
+.login {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg);
+  padding: 1rem;
+}
+
+.login__card {
+  width: 100%;
+  max-width: 400px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login__title {
+  font-size: var(--font-size-2xl);
+  font-weight: 700;
+  color: var(--color-text);
+  text-align: center;
+}
+
+.login__subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  text-align: center;
+  margin-top: -0.75rem;
+}
+
+.login__roles {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.login__role {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 1rem;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background-color: var(--color-bg);
+  cursor: pointer;
+  transition: border-color var(--transition), background-color var(--transition);
+  font-family: inherit;
+}
+
+.login__role:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.login__role--active {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+}
+
+.login__role-icon {
+  font-size: 1.75rem;
+}
+
+.login__role-label {
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  color: var(--color-text);
+}
+
+.login__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-danger);
+  text-align: center;
+  background-color: var(--color-danger-light);
+  padding: 0.75rem;
+  border-radius: var(--radius-md);
+}
+
+.login__btn {
+  width: 100%;
+}
