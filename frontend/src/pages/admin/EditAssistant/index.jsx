@@ -6,6 +6,7 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
+import Checkbox from "@/components/ui/Checkbox";
 import Spinner from "@/components/ui/Spinner";
 import "./EditAssistant.css";
 
@@ -109,8 +110,7 @@ export default function EditAssistant() {
         <h1 className="edit-assistant__title">Редактировать ассистента</h1>
 
         <Select
-          label="Категория"
-          placeholder="Выберите категорию..."
+          placeholder="Категория"
           value={form.categoryId}
           onChange={set("categoryId")}
           error={errors.categoryId}
@@ -125,7 +125,7 @@ export default function EditAssistant() {
         />
 
         <Textarea
-          label="Описание"
+          placeholder="Описание"
           value={form.description}
           rows={2}
           onChange={set("description")}
@@ -140,7 +140,7 @@ export default function EditAssistant() {
         />
 
         <Textarea
-          label="Системный промпт"
+          placeholder="Системный промпт"
           value={form.systemPrompt}
           rows={5}
           onChange={set("systemPrompt")}
@@ -148,21 +148,17 @@ export default function EditAssistant() {
         />
 
         <Textarea
-          label="Пример запроса пользователя"
-          placeholder="Необязательно"
+          placeholder="Пример запроса пользователя (необязательно)"
           value={form.exampleUserPrompt}
           rows={2}
           onChange={set("exampleUserPrompt")}
         />
 
-        <label className="edit-assistant__checkbox">
-          <input
-            type="checkbox"
-            checked={form.isActive}
-            onChange={set("isActive")}
-          />
-          Активен
-        </label>
+        <Checkbox
+          label="Активен"
+          checked={form.isActive}
+          onChange={set("isActive")}
+        />
 
         {serverError && (
           <p className="edit-assistant__error">{serverError}</p>

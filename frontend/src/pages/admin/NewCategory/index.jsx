@@ -43,9 +43,6 @@ export default function NewCategory() {
 
   return (
     <div className="new-category">
-      <div className="new-category__back">
-        <Link to="/assistants">← Назад</Link>
-      </div>
 
       <div className="new-category__card">
         <h1 className="new-category__title">Новая категория</h1>
@@ -58,8 +55,7 @@ export default function NewCategory() {
         />
 
         <Textarea
-          label="Описание"
-          placeholder="Краткое описание категории (необязательно)"
+          placeholder="Описание (необязательно)"
           value={description}
           rows={3}
           onChange={(e) => setDescription(e.target.value)}

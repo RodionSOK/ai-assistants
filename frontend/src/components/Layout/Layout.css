@@ -1,0 +1,33 @@
+.layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.layout__main {
+  margin-left: 240px;
+  flex: 1;
+  min-width: 0;
+  min-height: 100vh;
+  background-color: var(--color-bg);
+}
+
+.layout__theme-btn {
+  position: fixed;
+  top: max(1rem, env(safe-area-inset-top));
+  right: max(1rem, env(safe-area-inset-right));
+  z-index: 200;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    padding: 0.75rem 1rem;
+  }
+
+  .layout__main {
+    margin-left: 0;
+  }
+}

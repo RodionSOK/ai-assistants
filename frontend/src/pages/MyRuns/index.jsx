@@ -5,6 +5,7 @@ import RunRow from "@/components/RunRow";
 import Pagination from "@/components/Pagination";
 import Spinner from "@/components/ui/Spinner";
 import Empty from "@/components/ui/Empty";
+import Button from "@/components/ui/Button";
 import "./MyRuns.css";
 
 const STATUSES = [
@@ -62,13 +63,14 @@ export default function MyRuns() {
 
       <div className="my-runs__filters">
         {STATUSES.map((s) => (
-          <button
+          <Button
             key={s.value}
-            className={`my-runs__filter-btn ${status === s.value ? "my-runs__filter-btn--active" : ""}`}
+            variant={status === s.value ? "primary" : "secondary"}
+            size="sm"
             onClick={() => setParam("status", s.value)}
           >
             {s.label}
-          </button>
+          </Button>
         ))}
       </div>
 

@@ -6,6 +6,7 @@ import Input from "@/components/ui/Input";
 import Textarea from "@/components/ui/Textarea";
 import Select from "@/components/ui/Select";
 import Button from "@/components/ui/Button";
+import Checkbox from "@/components/ui/Checkbox";
 import "./NewAssistant.css";
 
 export default function NewAssistant() {
@@ -77,16 +78,12 @@ export default function NewAssistant() {
 
   return (
     <div className="new-assistant">
-      <div className="new-assistant__back">
-        <Link to="/assistants">← Назад</Link>
-      </div>
 
       <div className="new-assistant__card">
         <h1 className="new-assistant__title">Новый ассистент</h1>
 
         <Select
-          label="Категория"
-          placeholder="Выберите категорию..."
+          placeholder="Категория"
           value={form.categoryId}
           onChange={set("categoryId")}
           error={errors.categoryId}
@@ -101,8 +98,7 @@ export default function NewAssistant() {
         />
 
         <Textarea
-          label="Описание"
-          placeholder="Чем занимается ассистент"
+          placeholder="Описание"
           value={form.description}
           rows={2}
           onChange={set("description")}
@@ -117,8 +113,7 @@ export default function NewAssistant() {
         />
 
         <Textarea
-          label="Системный промпт"
-          placeholder="Инструкция для ассистента..."
+          placeholder="Системный промпт"
           value={form.systemPrompt}
           rows={5}
           onChange={set("systemPrompt")}
@@ -126,21 +121,17 @@ export default function NewAssistant() {
         />
 
         <Textarea
-          label="Пример запроса пользователя"
-          placeholder="Необязательно"
+          placeholder="Пример запроса пользователя (необязательно)"
           value={form.exampleUserPrompt}
           rows={2}
           onChange={set("exampleUserPrompt")}
         />
 
-        <label className="new-assistant__checkbox">
-          <input
-            type="checkbox"
-            checked={form.isActive}
-            onChange={set("isActive")}
-          />
-          Активен
-        </label>
+        <Checkbox
+          label="Активен"
+          checked={form.isActive}
+          onChange={set("isActive")}
+        />
 
         {serverError && (
           <p className="new-assistant__error">{serverError}</p>

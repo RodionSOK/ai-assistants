@@ -5,6 +5,7 @@ import RunRow from "@/components/RunRow";
 import Pagination from "@/components/Pagination";
 import Spinner from "@/components/ui/Spinner";
 import Empty from "@/components/ui/Empty";
+import Button from "@/components/ui/Button";
 import "./AllRuns.css";
 
 const STATUSES = [
@@ -58,20 +59,18 @@ export default function AllRuns() {
     <div className="all-runs">
       <div className="all-runs__header">
         <h1 className="all-runs__title">Все запуски</h1>
-        {!loading && !error && (
-          <span className="all-runs__total">Всего: {pagination.total}</span>
-        )}
       </div>
 
       <div className="all-runs__filters">
         {STATUSES.map((s) => (
-          <button
+          <Button
             key={s.value}
-            className={`all-runs__filter-btn ${status === s.value ? "all-runs__filter-btn--active" : ""}`}
+            variant={status === s.value ? "primary" : "secondary"}
+            size="sm"
             onClick={() => setParam("status", s.value)}
           >
             {s.label}
-          </button>
+          </Button>
         ))}
       </div>
 

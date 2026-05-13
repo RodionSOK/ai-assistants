@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, Link } from "react-router-dom";
 import { getAssistants } from "@/api/assistants";
 import { getCategories } from "@/api/categories";
 import useAuthStore from "@/store/auth";
@@ -7,6 +7,9 @@ import AssistantCard from "@/components/AssistantCard";
 import Pagination from "@/components/Pagination";
 import Spinner from "@/components/ui/Spinner";
 import Empty from "@/components/ui/Empty";
+import Input from "@/components/ui/Input";
+import Button from "@/components/ui/Button";
+import Checkbox from "@/components/ui/Checkbox";
 import "./Assistants.css";
 
 export default function Assistants() {
@@ -62,49 +65,45 @@ export default function Assistants() {
     });
   };
 
-  const handleSearch = (e) => {
-    setParam("q", e.target.value);
-  };
-
   return (
     <div className="assistants">
       <div className="assistants__header">
         <h1 className="assistants__title">Каталог ассистентов</h1>
-        {isAdmin && (
-          <label className="assistants__inactive-toggle">
-            <input
-              type="checkbox"
-              checked={includeInactive}
-              onChange={(e) => setParam("includeInactive", e.target.checked ? "true" : "")}
-            />
-            Показать неактивных
-          </label>
-        )}
       </div>
 
       <div className="assistants__filters">
-        <input
-          className="assistants__search"
-          type="search"
-          placeholder="Поиск по названию и описанию..."
-          value={q}
-          onChange={handleSearch}
-        />
+        <div className="assistants__search-row">
+          <Input
+            type="search"
+            placeholder="Поиск по названию и описанию..."
+            value={q}
+            onChange={(e) => setParam("q", e.target.value)}
+          />
+          {isAdmin && (
+            <Checkbox
+              label="Показать неактивных"
+              checked={includeInactive}
+              onChange={(e) => setParam("includeInactive", e.target.checked ? "true" : "")}
+            />
+          )}
+        </div>
         <div className="assistants__categories">
-          <button
-            className={`assistants__cat-btn ${!categoryId ? "assistants__cat-btn--active" : ""}`}
+          <Button
+            variant={!categoryId ? "primary" : "secondary"}
+            size="sm"
             onClick={() => setParam("categoryId", "")}
           >
             Все
-          </button>
+          </Button>
           {categories.map((cat) => (
-            <button
+            <Button
               key={cat.id}
-              className={`assistants__cat-btn ${categoryId === cat.id ? "assistants__cat-btn--active" : ""}`}
+              variant={categoryId === cat.id ? "primary" : "secondary"}
+              size="sm"
               onClick={() => setParam("categoryId", cat.id)}
             >
               {cat.name}
-            </button>
+            </Button>
           ))}
         </div>
       </div>

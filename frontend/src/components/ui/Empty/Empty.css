@@ -8,11 +8,6 @@
   text-align: center;
 }
 
-.empty-icon {
-  font-size: 2.5rem;
-  margin-bottom: 0.5rem;
-}
-
 .empty-title {
   font-size: var(--font-size-lg);
   font-weight: 600;

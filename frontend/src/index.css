@@ -21,7 +21,7 @@
   --color-border: rgba(60, 60, 67, 0.12);
   --color-border-strong: rgba(60, 60, 67, 0.29);
 
-  --color-text: rgba(28, 28, 30, 0.95);
+  --color-text: rgb(var(--rgb-btn-primary));
   --color-text-secondary: rgba(60, 60, 67, 0.6);
   --color-text-tertiary: rgba(60, 60, 67, 0.45);
   --color-text-on-accent: #ffffff;

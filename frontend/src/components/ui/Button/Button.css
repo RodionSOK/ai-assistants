@@ -53,13 +53,12 @@
 }
 
 .btn-secondary {
-  background-color: var(--color-surface);
+  background-color: var(--color-accent-on-surface);
   color: var(--color-text);
-  border: 1px solid var(--color-border);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background-color: var(--color-bg);
+  background-color: var(--color-accent-on-surface);
 }
 
 .btn-ghost {
@@ -89,7 +88,7 @@
   padding: 0.625rem 0.5rem;
   border-radius: var(--radius-md);
   background-color: transparent;
-  color: var(--color-text-secondary);
+  color: var(--color-text);
   font-size: var(--font-size-base);
   font-weight: 500;
   white-space: normal;
@@ -165,29 +164,44 @@
   padding: 1.125rem 0.75rem;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
-  background-color: var(--color-surface-secondary);
+  background-color: transparent;
   color: var(--color-text-secondary);
   white-space: normal;
   width: 100%;
   min-height: 0;
   line-height: var(--leading-snug);
+  transition: background-color var(--transition-base), color var(--transition-base),
+    border-color var(--transition-base), transform var(--transition-fast);
 }
 
 .btn-role:hover:not(:disabled):not(.btn-role--active) {
-  border-color: var(--color-border-strong);
-  color: var(--color-text);
-  background-color: var(--color-surface-secondary);
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border-color: transparent;
 }
 
 .btn-role--active {
-  border-color: var(--color-accent);
-  background-color: var(--color-accent-muted);
-  color: var(--color-accent);
-  box-shadow: 0 0 0 1px rgba(99, 99, 102, 0.15);
+  background-color: var(--color-btn-primary-bg);
+  color: var(--color-btn-primary-text);
+  border-color: transparent;
+  box-shadow: none;
+}
+
+.btn-role--active:hover:not(:disabled) {
+  background-color: var(--color-btn-primary-bg-hover);
+  color: var(--color-btn-primary-text);
 }
 
 [data-theme="dark"] .btn-role--active {
-  box-shadow: 0 0 0 1px rgba(174, 174, 178, 0.22);
+  background-color: var(--color-surface-tertiary);
+  color: var(--color-btn-primary-text);
+  border-color: transparent;
+}
+
+[data-theme="dark"] .btn-role:hover:not(:disabled):not(.btn-role--active) {
+  background-color: var(--color-surface-tertiary);
+  color: var(--color-btn-primary-text);
+  border-color: transparent;
 }
 
 .btn-role:active:not(:disabled) {
