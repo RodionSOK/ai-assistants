@@ -3,6 +3,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import { getAssistant } from "@/api/assistants";
 import { runAssistant } from "@/api/runs";
 import useAuthStore from "@/store/auth";
+import useRunsStore from "@/store/runs";
 import StatusBadge from "@/components/StatusBadge";
 import Button from "@/components/ui/Button";
 import Spinner from "@/components/ui/Spinner";
@@ -14,6 +15,7 @@ export default function AssistantDetail() {
   const navigate = useNavigate();
   const user = useAuthStore((s) => s.user);
   const isAdmin = user?.role === "admin";
+  const notifyRun = useRunsStore((s) => s.notifyRun);
 
   const [assistant, setAssistant] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -40,6 +42,7 @@ export default function AssistantDetail() {
     try {
       const result = await runAssistant(id, prompt.trim());
       setRunResult(result);
+      notifyRun();
     } catch (e) {
       setRunError(e?.response?.data?.error || "Ошибка при запуске ассистента");
     } finally {
@@ -86,8 +89,8 @@ export default function AssistantDetail() {
           </div>
           <div className="assistant-detail__meta">
             {assistant.isActive
-                ? <span className="badge badge--success">Активен</span>
-                : <span className="badge badge--default">Неактивен</span>}
+              ? <span className="badge badge--success">Активен</span>
+              : <span className="badge badge--default">Неактивен</span>}
             {isAdmin && (
               <Button
                 variant="secondary"

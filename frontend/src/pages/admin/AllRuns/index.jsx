@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getAllRuns } from "@/api/runs";
+import { getAssistants } from "@/api/assistants";
 import RunRow from "@/components/RunRow";
 import Pagination from "@/components/Pagination";
 import Spinner from "@/components/ui/Spinner";
 import Empty from "@/components/ui/Empty";
 import Button from "@/components/ui/Button";
+import Select from "@/components/ui/Select";
 import "./AllRuns.css";
 
 const STATUSES = [
@@ -20,11 +22,19 @@ export default function AllRuns() {
 
   const page = parseInt(searchParams.get("page") || "1");
   const status = searchParams.get("status") || "";
+  const assistantId = searchParams.get("assistantId") || "";
 
   const [runs, setRuns] = useState([]);
   const [pagination, setPagination] = useState({ page: 1, pageSize: 20, total: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [assistants, setAssistants] = useState([]);
+
+  useEffect(() => {
+    getAssistants({ pageSize: 100, includeInactive: true })
+      .then(({ assistants }) => setAssistants(assistants))
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     setLoading(true);
@@ -32,6 +42,7 @@ export default function AllRuns() {
 
     const params = { page, pageSize: 20 };
     if (status) params.status = status;
+    if (assistantId) params.assistantId = assistantId;
 
     getAllRuns(params)
       .then(({ runs, pagination }) => {
@@ -40,7 +51,7 @@ export default function AllRuns() {
       })
       .catch(() => setError("Не удалось загрузить запуски"))
       .finally(() => setLoading(false));
-  }, [page, status]);
+  }, [page, status, assistantId]);
 
   const setParam = (key, value) => {
     setSearchParams((prev) => {
@@ -62,16 +73,42 @@ export default function AllRuns() {
       </div>
 
       <div className="all-runs__filters">
-        {STATUSES.map((s) => (
+        <Select
+          placeholder="Все ассистенты"
+          value={assistantId}
+          onChange={(e) => setParam("assistantId", e.target.value)}
+          options={assistants.map((a) => ({ value: a.id, label: a.name }))}
+        />
+        {(assistantId || status) && (
           <Button
-            key={s.value}
-            variant={status === s.value ? "primary" : "secondary"}
+            variant="ghost"
             size="sm"
-            onClick={() => setParam("status", s.value)}
+            onClick={() => {
+              setSearchParams((prev) => {
+                const next = new URLSearchParams(prev);
+                next.delete("assistantId");
+                next.delete("status");
+                next.delete("page");
+                return next;
+              });
+            }}
           >
-            {s.label}
+            Сбросить фильтры
           </Button>
-        ))}
+        )}
+
+        <div className="all-runs__status-filters">
+          {STATUSES.map((s) => (
+            <Button
+              key={s.value}
+              variant={status === s.value ? "primary" : "secondary"}
+              size="sm"
+              onClick={() => setParam("status", s.value)}
+            >
+              {s.label}
+            </Button>
+          ))}
+        </div>
       </div>
 
       {loading && (

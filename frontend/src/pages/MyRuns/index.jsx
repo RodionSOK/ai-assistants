@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getMyRuns } from "@/api/runs";
+import useRunsStore from "@/store/runs";
 import RunRow from "@/components/RunRow";
 import Pagination from "@/components/Pagination";
 import Spinner from "@/components/ui/Spinner";
@@ -17,6 +18,7 @@ const STATUSES = [
 
 export default function MyRuns() {
   const [searchParams, setSearchParams] = useSearchParams();
+  const lastRunAt = useRunsStore((s) => s.lastRunAt);
 
   const page = parseInt(searchParams.get("page") || "1");
   const status = searchParams.get("status") || "";
@@ -40,7 +42,7 @@ export default function MyRuns() {
       })
       .catch(() => setError("Не удалось загрузить историю запусков"))
       .finally(() => setLoading(false));
-  }, [page, status]);
+  }, [page, status, lastRunAt]);
 
   const setParam = (key, value) => {
     setSearchParams((prev) => {
